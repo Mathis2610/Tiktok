@@ -32,9 +32,17 @@ app.add_middleware(
 )
 
 # MongoDB setup
-MONGO_URL = os.getenv("MONGO_URL", "mongodb://localhost:27017/tiktok_automation")
+MONGO_URL = os.getenv("MONGO_URL")
+if not MONGO_URL:
+    raise ValueError("MONGO_URL environment variable is required")
+
 client = AsyncIOMotorClient(MONGO_URL)
-db = client.get_default_database()
+
+# Extract database name from connection string
+from urllib.parse import urlparse
+parsed_url = urlparse(MONGO_URL)
+db_name = parsed_url.path.lstrip('/') or 'tiktok_automation'
+db = client[db_name]
 
 # Initialize services
 ai_service = AIService()
