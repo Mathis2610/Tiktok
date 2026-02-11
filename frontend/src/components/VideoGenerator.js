@@ -297,7 +297,7 @@ function VideoGenerator() {
 
               {/* Download Button */}
               <a
-                href={`${process.env.REACT_APP_BACKEND_URL}${result.video_url}`}
+                href={`${API_BASE_URL}${result.video_url}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn-primary w-full text-center"
