@@ -172,7 +172,7 @@ async def get_all_niches():
     cursor = db.niches.find({}).sort("profitability_score", -1)
     niches = await cursor.to_list(length=100)
     
-    return {"niches": niches, "count": len(niches)}
+    return {"niches": serialize_docs(niches), "count": len(niches)}
 
 @app.get("/api/niches/{niche}/trends")
 async def get_niche_trends(niche: str, limit: int = 10):
