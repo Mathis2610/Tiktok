@@ -253,7 +253,7 @@ async def list_videos(niche: Optional[str] = None, limit: int = 20):
     cursor = db.videos.find(query).sort("created_at", -1).limit(limit)
     videos = await cursor.to_list(length=limit)
     
-    return {"videos": videos, "count": len(videos)}
+    return {"videos": serialize_docs(videos), "count": len(videos)}
 
 @app.get("/api/videos/{video_id}")
 async def get_video(video_id: str):
