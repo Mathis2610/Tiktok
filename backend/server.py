@@ -106,7 +106,7 @@ async def get_trends(niche: Optional[str] = None, limit: int = 50):
     cursor = db.trends.find(query).sort("views", -1).limit(limit)
     trends = await cursor.to_list(length=limit)
     
-    return {"trends": trends, "count": len(trends)}
+    return {"trends": serialize_docs(trends), "count": len(trends)}
 
 @app.delete("/api/trends/{trend_id}")
 async def delete_trend(trend_id: str):
