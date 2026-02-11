@@ -262,7 +262,7 @@ async def get_video(video_id: str):
     if not video:
         raise HTTPException(status_code=404, detail="Vidéo non trouvée")
     
-    return video
+    return serialize_doc(video)
 
 @app.get("/api/videos/{video_id}/download")
 async def download_video(video_id: str):
