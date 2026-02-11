@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Sparkles, Loader, AlertCircle } from 'lucide-react';
-import { videosAPI, nichesAPI, learningAPI } from '../services/api';
+import { videosAPI, nichesAPI, learningAPI, API_BASE_URL } from '../services/api';
 
 function VideoGenerator() {
   const [niches, setNiches] = useState([]);
