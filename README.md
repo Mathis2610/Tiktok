@@ -87,26 +87,46 @@ Une application complète qui automatise la création de contenu viral pour TikT
 
 ## 🚀 Démarrage Rapide
 
-### Prérequis
-Les services sont déjà configurés et démarrés automatiquement via Supervisor :
-- MongoDB sur port 27017
-- Backend API sur port 8001
-- Frontend React sur port 3000
+### Installation depuis GitHub
 
-### Vérification des Services
+**📥 Cloner le repository** :
 ```bash
-sudo supervisorctl status
+git clone https://github.com/VOTRE_USERNAME/tiktok-automation.git
+cd tiktok-automation
 ```
 
-Vous devriez voir :
-- ✅ mongodb: RUNNING
-- ✅ backend: RUNNING
-- ✅ frontend: RUNNING
+**🐳 Avec Docker (Recommandé)** :
+```bash
+# 1. Configurer la clé Emergent
+cp .env.example backend/.env
+# Éditer backend/.env et ajouter votre EMERGENT_LLM_KEY
+
+# 2. Démarrer l'application
+./start.sh
+```
+
+**🔧 Sans Docker (Installation native)** :
+Consultez le guide complet : [DEPLOY_LOCAL.md](DEPLOY_LOCAL.md)
 
 ### Accès à l'Application
+Après démarrage, ouvrez :
 - **Frontend** : http://localhost:3000
 - **API Backend** : http://localhost:8001/api
 - **Documentation API** : http://localhost:8001/docs
+
+### 🔑 Configuration Requise
+
+**Clé Emergent LLM** (Obligatoire) :
+1. Obtenez votre clé sur https://app.emergent.ai (Profil → Universal Key)
+2. Ajoutez-la dans `backend/.env` :
+```bash
+EMERGENT_LLM_KEY=sk-emergent-VOTRE_CLE_ICI
+```
+
+Cette clé donne accès à :
+- ✅ OpenAI GPT-5.2 (génération de scripts)
+- ✅ Gemini Nano Banana (génération d'images)  
+- ✅ OpenAI TTS (voix-off)
 
 ## 📖 Guide d'Utilisation
 
