@@ -1,4 +1,72 @@
--e 
-# Environment files
-*.env
-*.env.*
+# Dependencies
+node_modules/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+ENV/
+
+# Environment variables
+.env
+.env.local
+.env.production
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Logs
+*.log
+logs/
+/var/log/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Database
+/data/
+*.db
+*.sqlite
+
+# Generated videos
+/app/backend/generated_videos/*
+!/app/backend/generated_videos/.gitkeep
+
+# Build files
+/app/frontend/build/
+/app/frontend/.cache/
+
+# Testing
+/coverage/
+.pytest_cache/
+
+# Temporary files
+*.tmp
+*.temp
+/tmp/
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Supervisor logs (local development)
+/var/log/supervisor/
+
+# MongoDB data (local)
+/data/db/
+
+# Backup files
+*.bak
+*.backup
