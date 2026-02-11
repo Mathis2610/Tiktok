@@ -16,6 +16,7 @@ from services.ai_service import AIService
 from services.video_service import VideoService
 from services.niche_analyzer import NicheAnalyzer
 from services.learning_service import LearningService
+from utils import serialize_doc, serialize_docs
 
 load_dotenv()
 
