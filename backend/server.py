@@ -180,7 +180,7 @@ async def get_niche_trends(niche: str, limit: int = 10):
     analyzer = NicheAnalyzer(db)
     trends = await analyzer.search_viral_videos(niche, limit)
     
-    return {"niche": niche, "trends": trends, "count": len(trends)}
+    return {"niche": niche, "trends": serialize_docs(trends), "count": len(trends)}
 
 # ===== VIDEO GENERATION =====
 
