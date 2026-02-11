@@ -13,6 +13,8 @@ const api = axios.create({
   },
 });
 
+export { API_BASE_URL }; // Export pour utilisation dans les composants
+
 export const trendsAPI = {
   add: (data) => api.post('/trends', data),
   list: (niche = null, limit = 50) => api.get('/trends', { params: { niche, limit } }),
