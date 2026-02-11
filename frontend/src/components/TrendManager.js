@@ -36,11 +36,19 @@ function TrendManager() {
     e.preventDefault();
     
     try {
-      await trendsAPI.add({
-        ...formData,
-        views: parseInt(formData.views),
-        engagement: parseInt(formData.engagement)
-      });
+      const payload = {
+        title: formData.title.trim(),
+        niche: formData.niche.trim(),
+        views: parseInt(formData.views) || 0,
+        engagement: parseInt(formData.engagement) || 0
+      };
+      
+      // Ajouter l'URL seulement si elle est remplie
+      if (formData.url && formData.url.trim()) {
+        payload.url = formData.url.trim();
+      }
+      
+      await trendsAPI.add(payload);
       
       showMessage('Tendance ajoutée avec succès!', 'success');
       setFormData({ title: '', url: '', views: '', engagement: '', niche: '' });
@@ -48,7 +56,8 @@ function TrendManager() {
       loadTrends();
     } catch (error) {
       console.error('Error adding trend:', error);
-      showMessage('Erreur lors de l\'ajout de la tendance', 'error');
+      const errorMsg = error.response?.data?.detail || 'Erreur lors de l\'ajout de la tendance';
+      showMessage(typeof errorMsg === 'string' ? errorMsg : JSON.stringify(errorMsg), 'error');
     }
   };
 
