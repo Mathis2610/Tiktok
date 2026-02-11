@@ -69,4 +69,7 @@ Thumbs.db
 
 # Backup files
 *.bak
-*.backup
+*.backup-e 
+# Environment files
+*.env
+*.env.*
