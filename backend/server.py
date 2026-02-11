@@ -154,7 +154,7 @@ async def get_analytics(video_id: Optional[str] = None):
     cursor = db.analytics.find(query).sort("date", -1)
     analytics = await cursor.to_list(length=100)
     
-    return {"analytics": analytics, "count": len(analytics)}
+    return {"analytics": serialize_docs(analytics), "count": len(analytics)}
 
 # ===== NICHE RECOMMENDATIONS =====
 
