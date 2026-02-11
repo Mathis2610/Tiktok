@@ -164,7 +164,7 @@ async def get_recommended_niches(limit: int = 5):
     analyzer = NicheAnalyzer(db)
     niches = await analyzer.get_recommended_niches(limit)
     
-    return {"niches": niches, "count": len(niches)}
+    return {"niches": serialize_docs(niches), "count": len(niches)}
 
 @app.get("/api/niches/all")
 async def get_all_niches():
